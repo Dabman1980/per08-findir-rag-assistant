@@ -1,0 +1,20 @@
+# Ассистент по документации FinDir (ДЗ PEr08).
+# Python 3.12: под 3.13/3.14 у chromadb нет готовых колёс, а ragas конфликтует
+# по зависимостям — это ровно та засада, о которой предупреждает урок.
+
+# --- Ядро ассистента ---
+openai>=1.0          # клиент для Ollama, GigaChat (оба OpenAI-совместимы)
+chromadb>=0.5        # локальная векторная база
+httpx>=0.27          # HTTP с явным SSL-контекстом (сертификаты НУЦ для GigaChat)
+certifi>=2024.0      # корневые сертификаты: у Python с python.org своих нет
+python-dotenv>=1.0   # ключи из .env, а не из кода
+
+# --- Оценка качества (evaluate_ragas.py) ---
+# langchain закреплён на ветке 0.3.x: ragas 0.4 импортирует модуль, удалённый в 1.x
+ragas>=0.4,<0.5
+langchain>=0.3,<0.4
+langchain-core>=0.3,<0.4
+langchain-community>=0.3,<0.4
+langchain-anthropic>=0.2,<0.4   # судья метрик
+langchain-ollama>=0.2,<0.4      # эмбеддинги для answer_relevancy
+datasets

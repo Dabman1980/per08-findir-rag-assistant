@@ -1,0 +1,22 @@
+# Секреты — никогда в репозиторий
+.env
+
+# А образец с именами ключей (без значений) нужен: глобальный gitignore прячет .env.*,
+# поэтому возвращаем его явным исключением
+!.env.example
+
+# Сертификаты НУЦ ставятся локально скриптом setup_certs.py
+certs/
+
+# Артефакты работы: у каждого свои
+chroma_db/
+cache.sqlite
+cache_selftest.sqlite
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
